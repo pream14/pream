@@ -1710,53 +1710,6 @@ button, input, textarea {
   box-shadow: var(--shadow-md);
 }
 
-/* Topic Selector */
-.topic-row {
-  margin-bottom: 1.35rem;
-}
-
-.topic-prompt {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  margin-bottom: 0.55rem;
-}
-
-.topic-chips-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.topic-chip-btn {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.topic-chip-btn:hover {
-  border-color: var(--accent-primary);
-  color: var(--text-primary);
-}
-
-.topic-chip-btn.active {
-  background: var(--accent-primary);
-  border-color: var(--accent-primary);
-  color: #ffffff;
-  box-shadow: 0 0 12px -2px var(--accent-primary);
-}
-
 /* Form */
 .message-form {
   display: flex;

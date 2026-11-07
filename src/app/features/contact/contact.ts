@@ -22,27 +22,15 @@ export class ContactComponent {
   // Form Model
   name = '';
   email = '';
-  subject = 'Job Opportunity';
+  subject = '';
   message = '';
 
-  // Topics for quick selection
-  readonly topics: string[] = [
-    'Job Opportunity',
-    'Project Collaboration',
-    'General Inquiry'
-  ];
-  selectedTopic = signal<string>('Job Opportunity');
   copiedEmail = signal<boolean>(false);
 
   // Form State
   isSubmitting = signal<boolean>(false);
   isSuccess = signal<boolean>(false);
   errorMessage = signal<string>('');
-
-  selectTopic(topic: string): void {
-    this.selectedTopic.set(topic);
-    this.subject = topic;
-  }
 
   async copyEmail(): Promise<void> {
     if (!this.isBrowser) {
@@ -116,7 +104,7 @@ export class ContactComponent {
   private resetForm(): void {
     this.name = '';
     this.email = '';
-    this.subject = this.selectedTopic();
+    this.subject = '';
     this.message = '';
   }
 }

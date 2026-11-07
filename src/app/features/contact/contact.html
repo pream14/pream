@@ -93,23 +93,6 @@
 
       <!-- Right Column: Minimalist Message Card -->
       <div class="contact-card" appScrollReveal [revealDelay]="200">
-        <!-- Topic Selector Chips -->
-        <div class="topic-row">
-          <span class="topic-prompt">Select purpose:</span>
-          <div class="topic-chips-list" role="radiogroup">
-            @for (topic of topics; track topic) {
-              <button
-                type="button"
-                class="topic-chip-btn"
-                [class.active]="selectedTopic() === topic"
-                (click)="selectTopic(topic)"
-              >
-                {{ topic }}
-              </button>
-            }
-          </div>
-        </div>
-
         <!-- Feedback Alerts -->
         @if (isSuccess()) {
           <div class="contact-alert success" role="alert">

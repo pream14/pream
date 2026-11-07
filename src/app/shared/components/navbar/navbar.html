@@ -1,0 +1,104 @@
+<header class="navbar-wrapper" [class.scrolled]="isScrolled()">
+  <div class="container navbar-inner">
+    <!-- Brand / Logo (Matches Image 1 bold serif logo) -->
+    <a href="#hero" class="brand" (click)="navigateTo('hero', $event)">
+      <span class="brand-serif">Pream.</span>
+    </a>
+
+    <!-- Desktop Nav Links (Matches Image 1 with clean spacing & active dot) -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        @for (item of navItems; track item.id) {
+          @if (item.id !== 'hero') {
+            <li class="nav-item">
+              <a
+                [href]="'#' + item.id"
+                class="nav-link"
+                [class.active]="scrollService.activeSection() === item.id"
+                (click)="navigateTo(item.id, $event)"
+              >
+                <span class="nav-label">{{ item.label }}</span>
+                @if (scrollService.activeSection() === item.id) {
+                  <span class="active-dot" aria-hidden="true"></span>
+                }
+              </a>
+            </li>
+          }
+        }
+      </ul>
+    </nav>
+
+    <!-- Nav Actions (Connect button & Theme Toggle) -->
+    <div class="nav-actions">
+      <!-- Dark/Light Theme Toggle -->
+      <button
+        type="button"
+        class="theme-toggle-btn"
+        (click)="toggleTheme()"
+        [attr.aria-label]="themeService.currentTheme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+        [title]="themeService.currentTheme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+      >
+        @if (themeService.currentTheme() === 'dark') {
+          <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        } @else {
+          <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        }
+      </button>
+
+      <!-- Exact "Let's Connect ↗" button from Image 1 -->
+      <a href="#contact" class="btn-indigo nav-connect-btn" (click)="navigateTo('contact', $event)">
+        <span>Let's Connect</span>
+        <span class="arrow-diagonal">↗</span>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        type="button"
+        class="mobile-toggle-btn"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="hamburger-line" [class.open]="isMobileMenuOpen()"></span>
+        <span class="hamburger-line" [class.open]="isMobileMenuOpen()"></span>
+        <span class="hamburger-line" [class.open]="isMobileMenuOpen()"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  @if (isMobileMenuOpen()) {
+    <div class="mobile-menu-backdrop" (click)="toggleMobileMenu()" aria-hidden="true"></div>
+    <nav class="mobile-nav" aria-label="Mobile Navigation">
+      <ul class="mobile-nav-list">
+        @for (item of navItems; track item.id) {
+          <li class="mobile-nav-item">
+            <a
+              [href]="'#' + item.id"
+              class="mobile-nav-link"
+              [class.active]="scrollService.activeSection() === item.id"
+              (click)="navigateTo(item.id, $event)"
+            >
+              <span>{{ item.label }}</span>
+              @if (scrollService.activeSection() === item.id) {
+                <span class="mobile-active-dot">•</span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  }
+</header>

@@ -1,0 +1,68 @@
+name: Deploy Portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine base-href and build
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          if [[ "$REPO_NAME" == *".github.io"* ]]; then
+            echo "Deploying to root domain: base-href is /"
+            BASE_HREF="/"
+          else
+            echo "Deploying to subpath: base-href is /$REPO_NAME/"
+            BASE_HREF="/$REPO_NAME/"
+          fi
+          npx ng build --base-href "$BASE_HREF"
+
+      - name: Prepare static files for GitHub Pages
+        run: |
+          if [ -f dist/MyPortfolio/browser/index.csr.html ]; then
+            cp dist/MyPortfolio/browser/index.csr.html dist/MyPortfolio/browser/index.html
+            cp dist/MyPortfolio/browser/index.csr.html dist/MyPortfolio/browser/404.html
+          fi
+          if [ ! -f dist/MyPortfolio/browser/404.html ] && [ -f dist/MyPortfolio/browser/index.html ]; then
+            cp dist/MyPortfolio/browser/index.html dist/MyPortfolio/browser/404.html
+          fi
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/MyPortfolio/browser
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+

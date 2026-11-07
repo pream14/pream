@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.portfolio-main {
+  position: relative;
+}
+

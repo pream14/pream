@@ -1,0 +1,13 @@
+<div class="header-container" [class.text-center]="centered">
+  @if (badge) {
+    <div class="badge-pill mb-2">
+      <span class="badge-dot"></span>
+      {{ badge }}
+    </div>
+  }
+  <h2 class="section-title">{{ title }}</h2>
+  @if (subtitle) {
+    <p class="section-subtitle">{{ subtitle }}</p>
+  }
+</div>
+

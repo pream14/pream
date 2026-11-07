@@ -1,0 +1,133 @@
+<section id="hero" class="hero-section" (mousemove)="onHeroMouseMove($event)" (mouseleave)="onHeroMouseLeave()">
+  <!-- Subtle Ambient Glow Backdrop -->
+  <div class="hero-ambient-glow" aria-hidden="true"></div>
+
+  <!-- Interactive Subtle Neural Canvas -->
+  <canvas #heroCanvas class="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="container hero-container">
+    <div class="hero-grid">
+      <!-- Left Column: Editorial Headline, Bio & Clean CTAs -->
+      <div class="hero-content" appScrollReveal>
+        <!-- Refined Eyebrow -->
+        <div class="hero-eyebrow">
+          <span class="eyebrow-slash">//</span>
+          <span class="eyebrow-text">DIGITAL SPECIALIST ENGINEER</span>
+        </div>
+
+        <!-- Balanced Editorial Headline (Standardized font size & family) -->
+        <h1 class="hero-editorial-title">
+          Engineering scalable backends<br>
+          & <span class="purple-gradient-text">intelligent</span> systems.
+        </h1>
+
+        <!-- High-Impact, Professional Bio -->
+        <p class="hero-editorial-bio">
+          I'm <strong>{{ profile.name }}</strong> — a Digital Specialist Engineer at Infosys and PSG Tech graduate. I engineer resilient Spring Boot microservices, scalable full-stack applications, and local LLM pipelines with a relentless focus on performance and reliability.
+        </p>
+
+        <!-- Action Buttons (Balanced size matching Image 1) -->
+        <div class="hero-editorial-actions">
+          <a href="#contact" class="btn-indigo" (click)="scrollTo('contact', $event)">
+            <span>Get in touch</span>
+            <span class="arrow-diagonal">↗</span>
+          </a>
+
+          <a href="#projects" class="btn-white" (click)="scrollTo('projects', $event)">
+            <span>View my work</span>
+            <span class="arrow-diagonal">↗</span>
+          </a>
+
+          <a [href]="profile.resumeUrl" download="Pream_Infy_resume_1.pdf" class="btn-white resume-btn" title="Download Resume PDF">
+            <span>Resume</span>
+            <span class="arrow-diagonal">↗</span>
+          </a>
+        </div>
+
+        <!-- Clean Subtle Social Links -->
+        <div class="hero-social-links">
+          @if (profile.socialLinks.github) {
+            <a [href]="profile.socialLinks.github" target="_blank" rel="noopener noreferrer" class="social-text-link">
+              <span>GitHub</span>
+              <span class="arrow-diagonal">↗</span>
+            </a>
+          }
+          @if (profile.socialLinks.linkedin) {
+            <span class="social-dot" aria-hidden="true">•</span>
+            <a [href]="profile.socialLinks.linkedin" target="_blank" rel="noopener noreferrer" class="social-text-link">
+              <span>LinkedIn</span>
+              <span class="arrow-diagonal">↗</span>
+            </a>
+          }
+          @if (profile.socialLinks.email) {
+            <span class="social-dot" aria-hidden="true">•</span>
+            <a [href]="profile.socialLinks.email" class="social-text-link">
+              <span>Email</span>
+              <span class="arrow-diagonal">↗</span>
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Right Column: Sleek Balanced Editorial Portrait Card -->
+      <div class="hero-visual" appScrollReveal [revealDelay]="120">
+        <div class="portrait-stage">
+          <!-- Ambient Ethereal Glow Backdrop -->
+          <div class="portrait-aura-glow" aria-hidden="true"></div>
+
+          <!-- Compact Balanced Portrait Frame with Interactive Micro-Tilt -->
+          <div
+            class="portrait-card"
+            (mousemove)="onCardMouseMove($event)"
+            (mouseleave)="onCardMouseLeave()"
+            [style.transform]="cardTransform()"
+          >
+            <!-- Corner Technical Accents -->
+            <div class="tech-corner corner-tl" aria-hidden="true"></div>
+            <div class="tech-corner corner-tr" aria-hidden="true"></div>
+            <div class="tech-corner corner-bl" aria-hidden="true"></div>
+            <div class="tech-corner corner-br" aria-hidden="true"></div>
+
+            <!-- Top Micro-Status Bar -->
+            <div class="portrait-micro-header">
+              <div class="micro-status-pill">
+                <span class="status-pulse-dot"></span>
+                <span class="status-text">Infosys · DSE</span>
+              </div>
+              <span class="micro-code-tag">BE CSE '26</span>
+            </div>
+
+            <!-- High-Fidelity Photo with Laser Shimmer -->
+            <div class="portrait-image-wrapper">
+              <img
+                src="pream-profile.jpeg"
+                alt="Pream - Digital Specialist Engineer at Infosys"
+                class="portrait-photo"
+                loading="eager"
+                (error)="onPhotoError($event)"
+              />
+              <div class="laser-scanner" aria-hidden="true"></div>
+              <div class="portrait-hologram-overlay" aria-hidden="true"></div>
+            </div>
+
+            <!-- Sleek Compact Identity Bar -->
+            <div class="portrait-docked-island">
+              <div class="docked-left">
+                <span class="docked-name">Pream</span>
+                <span class="docked-sub">Digital Specialist Engineer</span>
+              </div>
+              <div class="docked-right">
+                <div class="signal-frequency" aria-label="System active frequency">
+                  <span class="freq-bar bar-1"></span>
+                  <span class="freq-bar bar-2"></span>
+                  <span class="freq-bar bar-3"></span>
+                  <span class="freq-bar bar-4"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

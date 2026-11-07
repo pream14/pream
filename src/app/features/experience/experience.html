@@ -1,0 +1,66 @@
+<section id="experience" class="section experience-section">
+  <div class="container">
+    <h2 class="section-title-editorial" appScrollReveal>Experience</h2>
+
+    <div class="timeline-container">
+      @for (item of experienceList; track item.id; let idx = $index) {
+        <div class="timeline-item" appScrollReveal [revealDelay]="idx * 150">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line"></div>
+          </div>
+
+          <div class="timeline-card">
+            <div class="card-top">
+              <div>
+                <span class="period-badge">{{ item.period }}</span>
+                <h3 class="role-title">{{ item.role }}</h3>
+                <h4 class="company-name">{{ item.company }}</h4>
+              </div>
+              @if (item.location) {
+                <span class="location-text">
+                  <svg class="loc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  {{ item.location }}
+                </span>
+              }
+            </div>
+
+            <!-- Description (Marked with TODO placeholder) -->
+            <p class="role-summary" [class.is-todo]="item.description.includes('TODO:')">
+              {{ item.description }}
+            </p>
+
+            <!-- Highlights / Key contributions -->
+            <div class="highlights-box">
+              <span class="highlights-title">Key Contributions & Highlights:</span>
+              <ul class="highlights-list">
+                @for (hl of item.highlights; track hl) {
+                  <li [class.is-todo]="hl.includes('TODO:')">
+                    <span class="bullet" aria-hidden="true">▹</span>
+                    <span>{{ hl }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+
+            <!-- Tech stack chips -->
+            @if (item.techStack && item.techStack.length > 0) {
+              <div class="tech-stack-row">
+                <span class="tech-label">Technologies:</span>
+                <div class="tech-chips">
+                  @for (tech of item.techStack; track tech) {
+                    <span class="clean-pill">{{ tech }}</span>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

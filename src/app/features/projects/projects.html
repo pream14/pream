@@ -1,0 +1,127 @@
+<section id="projects" class="section projects-section">
+  <div class="container">
+    <!-- Section Top Bar: Editorial Title & Category Filter -->
+    <div class="projects-top-bar" appScrollReveal>
+      <h2 class="section-title-editorial">Projects</h2>
+
+      <!-- Subtle Category Filter Pills -->
+      <div class="filter-pills">
+        @for (cat of categories(); track cat) {
+          <button
+            type="button"
+            class="filter-pill"
+            [class.active]="selectedCategory() === cat"
+            (click)="setCategory(cat)"
+          >
+            {{ cat }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- 2-Column Projects Grid (Exact Match to Image 3) -->
+    <div class="projects-grid">
+      @for (project of filteredProjects(); track project.id; let idx = $index) {
+        <article
+          class="project-card spotlight-card"
+          appScrollReveal
+          [revealDelay]="(idx % 2) * 100"
+          appCardSpotlight
+        >
+          <!-- Project Title in Bold Editorial Serif (Image 3) -->
+          <h3 class="project-title-serif">{{ project.title }}</h3>
+
+          <!-- Tech Stack Pills directly below Title (Image 3) -->
+          <div class="project-pills-row">
+            @for (tag of project.tags; track tag) {
+              <span class="clean-pill">{{ tag }}</span>
+            }
+          </div>
+
+          <!-- Description (Image 3) -->
+          <p class="project-desc">{{ project.description }}</p>
+
+          <!-- Card Bottom Action: Category & Diagonal Expand Link (Image 3) -->
+          <div class="project-card-footer">
+            <span class="project-cat-pill">{{ project.category }}</span>
+
+            <div class="project-actions">
+              @if (project.repoUrl) {
+                <a
+                  [href]="project.repoUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="card-arrow-btn"
+                  aria-label="View Source Code on GitHub"
+                  title="View Source Code"
+                >
+                  <span class="arrow-diagonal">↗</span>
+                </a>
+              } @else if (project.demoUrl) {
+                <a
+                  [href]="project.demoUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="card-arrow-btn"
+                  aria-label="View Live Demo"
+                  title="View Live Demo"
+                >
+                  <span class="arrow-diagonal">↗</span>
+                </a>
+              } @else {
+                <span class="card-arrow-btn" title="Engineered Solution">
+                  <span class="arrow-diagonal">↗</span>
+                </span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- IEEE Conference Research Publications (Refined Editorial Style) -->
+    @if (publications && publications.length > 0) {
+      <div class="publications-section" appScrollReveal [revealDelay]="100">
+        <div class="publications-header">
+          <div class="pub-badge">
+            <span>IEEE Research & Publications</span>
+          </div>
+          <h3 class="section-title-editorial pub-heading">Conference Papers</h3>
+          <p class="pub-intro">
+            Peer-reviewed research presented and published at IEEE international conferences.
+          </p>
+        </div>
+
+        <div class="publications-grid">
+          @for (pub of publications; track pub.id; let idx = $index) {
+            <div class="publication-card spotlight-card" appScrollReveal [revealDelay]="idx * 100" appCardSpotlight>
+              <div class="pub-card-top">
+                <span class="pub-venue-badge">{{ pub.venue }}</span>
+                <span class="pub-year">{{ pub.year }}</span>
+              </div>
+
+              <h4 class="pub-paper-title">{{ pub.title }}</h4>
+
+              <div class="pub-card-bottom">
+                <div class="pub-host-info">
+                  <svg class="host-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>{{ pub.host }}</span>
+                </div>
+
+                @if (pub.url) {
+                  <a [href]="pub.url" target="_blank" rel="noopener noreferrer" class="pub-link" aria-label="View Paper">
+                    <span>View Paper</span>
+                    <span class="arrow-diagonal">↗</span>
+                  </a>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

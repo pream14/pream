@@ -1,0 +1,73 @@
+<section id="about" class="section about-section">
+  <div class="container">
+    <h2 class="section-title-editorial" appScrollReveal>About Me</h2>
+
+    <div class="about-grid">
+      <!-- Bio Narrative Card -->
+      <div class="about-narrative-card" appScrollReveal [revealDelay]="100">
+        <h3 class="card-title">Engineering with Purpose</h3>
+        <p class="narrative-text">
+          I am a <strong>Digital Specialist Engineer at Infosys</strong> (since May 2026), having graduated with a
+          <strong>Bachelor of Engineering in Computer Science and Engineering</strong> from the prestigious
+          <strong>PSG College of Technology</strong> (2022–2026).
+        </p>
+        <p class="narrative-text">
+          My primary engineering interests lie in <strong>backend development</strong>, building high-throughput APIs,
+          architecting scalable systems, and designing elegant <strong>full-stack</strong> solutions. I also actively explore
+          <strong>Generative AI</strong> to understand how modern intelligent systems enhance developer velocity and solve real-world problems.
+        </p>
+        <p class="narrative-text">
+          I enjoy taking complex architectural requirements and turning them into maintainable, performant, and well-tested codebases.
+        </p>
+      </div>
+
+      <!-- Quick Highlights Column -->
+      <div class="about-highlights" appScrollReveal [revealDelay]="200">
+        <!-- Current Role Card -->
+        <div class="highlight-card">
+          <div class="card-icon-box">
+            <svg class="h-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="card-label">Current Role</span>
+            <h4 class="card-heading">{{ profile.title }}</h4>
+            <p class="card-sub">{{ profile.company }} · {{ profile.companyPeriod }}</p>
+          </div>
+        </div>
+
+        <!-- Education Card -->
+        <div class="highlight-card">
+          <div class="card-icon-box">
+            <svg class="h-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="card-label">Education</span>
+            <h4 class="card-heading">BE Computer Science & Engineering</h4>
+            <p class="card-sub">PSG College of Technology (2022–2026)</p>
+          </div>
+        </div>
+
+        <!-- Key Interests Card -->
+        <div class="highlight-card">
+          <div class="card-icon-box">
+            <svg class="h-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div>
+            <span class="card-label">Core Interests</span>
+            <h4 class="card-heading">Backend · Full Stack · GenAI</h4>
+            <p class="card-sub">Robust backends, responsive interfaces, intelligent workflows</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

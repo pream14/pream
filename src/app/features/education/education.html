@@ -1,0 +1,51 @@
+<section id="education" class="section education-section">
+  <div class="container">
+    <h2 class="section-title-editorial" appScrollReveal>Education</h2>
+
+    <div class="education-grid">
+      @for (edu of educationList; track edu.id; let idx = $index) {
+        <div class="education-card" appScrollReveal [revealDelay]="idx * 150">
+          <div class="edu-header">
+            <div class="edu-icon-box">
+              <svg class="edu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+
+            <div class="edu-info">
+              <span class="edu-period">{{ edu.period }}</span>
+              <h3 class="edu-degree">{{ edu.degree }}</h3>
+              <h4 class="edu-institution">{{ edu.institution }}</h4>
+              @if (edu.location) {
+                <span class="edu-location">{{ edu.location }}</span>
+              }
+            </div>
+          </div>
+
+          <!-- Coursework & Academic Highlights (Placeholders) -->
+          <div class="edu-details-container">
+            @if (edu.coursework) {
+              <div class="detail-row">
+                <span class="detail-label">Key Coursework:</span>
+                <p class="detail-content" [class.is-todo]="edu.coursework.includes('TODO:')">
+                  {{ edu.coursework }}
+                </p>
+              </div>
+            }
+
+            @if (edu.details) {
+              <div class="detail-row">
+                <span class="detail-label">Milestones & Activities:</span>
+                <p class="detail-content" [class.is-todo]="edu.details.includes('TODO:')">
+                  {{ edu.details }}
+                </p>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

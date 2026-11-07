@@ -4,7 +4,7 @@ import { PortfolioData } from '../models/portfolio.model';
  * Formspree Endpoint Configuration
  * TODO: Replace with your actual Formspree endpoint URL (e.g. 'https://formspree.io/f/xyzab123')
  */
-export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maeezoag';
 
 export const PORTFOLIO_DATA: PortfolioData = {
   profile: {

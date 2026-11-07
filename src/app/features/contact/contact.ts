@@ -22,13 +22,41 @@ export class ContactComponent {
   // Form Model
   name = '';
   email = '';
-  subject = '';
+  subject = 'Job Opportunity';
   message = '';
+
+  // Topics for quick selection
+  readonly topics: string[] = [
+    'Job Opportunity',
+    'GenAI / LLM Project',
+    'Backend Architecture',
+    'General Inquiry'
+  ];
+  selectedTopic = signal<string>('Job Opportunity');
+  copiedEmail = signal<boolean>(false);
 
   // Form State
   isSubmitting = signal<boolean>(false);
   isSuccess = signal<boolean>(false);
   errorMessage = signal<string>('');
+
+  selectTopic(topic: string): void {
+    this.selectedTopic.set(topic);
+    this.subject = topic;
+  }
+
+  async copyEmail(): Promise<void> {
+    if (!this.isBrowser) {
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText('pream20041214@gmail.com');
+      this.copiedEmail.set(true);
+      setTimeout(() => this.copiedEmail.set(false), 2400);
+    } catch {
+      // Fallback if clipboard API restricted
+    }
+  }
 
   async onSubmit(): Promise<void> {
     if (!this.name || !this.email || !this.message) {
@@ -89,7 +117,7 @@ export class ContactComponent {
   private resetForm(): void {
     this.name = '';
     this.email = '';
-    this.subject = '';
+    this.subject = this.selectedTopic();
     this.message = '';
   }
 }

@@ -1,174 +1,265 @@
 <section id="contact" class="section contact-section">
   <div class="container">
-    <h2 class="section-title-editorial" appScrollReveal>Contact</h2>
+    <!-- Header with Live Availability Status -->
+    <div class="contact-header" appScrollReveal>
+      <div class="contact-tag-badge">
+        <span class="mono-hash">//</span>
+        <span>GET IN TOUCH</span>
+      </div>
+      <h2 class="contact-title">Let's Build Something Exceptional.</h2>
+      <div class="contact-availability-bar">
+        <span class="pulse-indicator">
+          <span class="status-pulse-dot"></span>
+        </span>
+        <span class="avail-text">Open to full-time SWE & GenAI roles</span>
+        <span class="avail-dot" aria-hidden="true">•</span>
+        <span class="avail-tz">
+          <svg class="avail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          IST (UTC+5:30) · Quick Response
+        </span>
+      </div>
+    </div>
 
-    <div class="contact-grid">
-      <!-- Contact Info Card -->
-      <div class="contact-info-card" appScrollReveal [revealDelay]="100">
-        <h3 class="info-title">Let's Connect</h3>
-        <p class="info-intro">
-          I am always open to discussing new opportunities, backend and full-stack software development, or ideas around Generative AI.
-        </p>
+    <div class="contact-layout">
+      <!-- Left Column: Direct Communication Hub -->
+      <div class="contact-hub" appScrollReveal [revealDelay]="120">
+        <!-- Interactive Primary Email Card -->
+        <div class="hub-card hub-email-card">
+          <div class="card-icon-badge">
+            <svg class="hub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="email-details">
+            <span class="hub-label">Direct Email</span>
+            <span class="email-address">pream20041214&#64;gmail.com</span>
+          </div>
+          <div class="email-actions">
+            <a
+              [href]="profile.socialLinks.email"
+              class="hub-action-btn primary"
+              aria-label="Send email directly"
+            >
+              <span>Compose</span>
+              <span class="arrow-glyph">↗</span>
+            </a>
+            <button
+              type="button"
+              class="hub-action-btn secondary"
+              (click)="copyEmail()"
+              [attr.aria-label]="copiedEmail() ? 'Email copied to clipboard' : 'Copy email address'"
+            >
+              @if (copiedEmail()) {
+                <span class="copied-indicator">Copied! ✓</span>
+              } @else {
+                <span>Copy</span>
+              }
+            </button>
+          </div>
+        </div>
 
-        <div class="contact-methods">
-          <!-- Email -->
-          <a [href]="profile.socialLinks.email" class="method-item">
-            <div class="method-icon-box">
-              <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </div>
-            <div>
-              <span class="method-label">Email</span>
-              <span class="method-value">pream20041214&#64;gmail.com</span>
-            </div>
-          </a>
-
-          <!-- LinkedIn -->
+        <!-- Social Network Tiles (LinkedIn & GitHub) -->
+        <div class="social-tiles-grid">
           @if (profile.socialLinks.linkedin) {
-            <a [href]="profile.socialLinks.linkedin" target="_blank" rel="noopener noreferrer" class="method-item">
-              <div class="method-icon-box">
-                <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <a
+              [href]="profile.socialLinks.linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-tile linkedin-tile"
+            >
+              <div class="tile-icon-box">
+                <svg class="tile-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                   <rect x="2" y="9" width="4" height="12"></rect>
                   <circle cx="4" cy="4" r="2"></circle>
                 </svg>
               </div>
-              <div>
-                <span class="method-label">LinkedIn</span>
-                <span class="method-value">Pream on LinkedIn</span>
+              <div class="tile-content">
+                <span class="tile-heading">LinkedIn</span>
+                <span class="tile-desc">Connect & network</span>
               </div>
+              <span class="tile-arrow">↗</span>
             </a>
           }
 
-          <!-- GitHub -->
           @if (profile.socialLinks.github) {
-            <a [href]="profile.socialLinks.github" target="_blank" rel="noopener noreferrer" class="method-item">
-              <div class="method-icon-box">
-                <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <a
+              [href]="profile.socialLinks.github"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-tile github-tile"
+            >
+              <div class="tile-icon-box">
+                <svg class="tile-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
               </div>
-              <div>
-                <span class="method-label">GitHub</span>
-                <span class="method-value">Pream on GitHub</span>
+              <div class="tile-content">
+                <span class="tile-heading">GitHub</span>
+                <span class="tile-desc">Explore open source</span>
               </div>
+              <span class="tile-arrow">↗</span>
             </a>
           }
+        </div>
 
-          <!-- Location -->
-          <div class="method-item">
-            <div class="method-icon-box">
-              <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </div>
-            <div>
-              <span class="method-label">Location</span>
-              <span class="method-value">{{ profile.location }}</span>
-            </div>
+        <!-- Technical Status / Location Card -->
+        <div class="hub-card hub-specs-card">
+          <div class="spec-row">
+            <span class="spec-key">Current Role</span>
+            <span class="spec-val">Digital Specialist Engineer @ Infosys</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Location</span>
+            <span class="spec-val">Coimbatore / Bengaluru, India</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Core Stacks</span>
+            <span class="spec-val">Spring Boot · Angular · Generative AI</span>
           </div>
         </div>
       </div>
 
-      <!-- Formspree Contact Form -->
-      <div class="contact-form-card" appScrollReveal [revealDelay]="200">
+      <!-- Right Column: Interactive Studio Form -->
+      <div class="contact-studio-card" appScrollReveal [revealDelay]="220">
+        <!-- Topic Selector Chips -->
+        <div class="topic-section">
+          <label class="topic-label">SELECT PURPOSE</label>
+          <div class="topic-chips" role="radiogroup" aria-label="Select message topic">
+            @for (topic of topics; track topic) {
+              <button
+                type="button"
+                class="topic-chip"
+                [class.active]="selectedTopic() === topic"
+                (click)="selectTopic(topic)"
+              >
+                {{ topic }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- Feedback Alerts -->
         @if (isSuccess()) {
-          <div class="alert alert-success" role="alert">
-            <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <div class="studio-alert alert-success" role="alert">
+            <svg class="alert-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
               <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
             <div>
-              <h4 class="alert-title">Message Sent!</h4>
-              <p class="alert-text">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+              <h4 class="alert-head">Message Received</h4>
+              <p class="alert-desc">Thank you for reaching out. I'll get back to you shortly.</p>
             </div>
           </div>
         }
 
         @if (errorMessage()) {
-          <div class="alert alert-error" role="alert">
-            <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <div class="studio-alert alert-error" role="alert">
+            <svg class="alert-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="12" y1="8" x2="12" y2="12"></line>
               <line x1="12" y1="16" x2="12.01" y2="16"></line>
             </svg>
             <div>
-              <h4 class="alert-title">Notice</h4>
-              <p class="alert-text">{{ errorMessage() }}</p>
+              <h4 class="alert-head">Notice</h4>
+              <p class="alert-desc">{{ errorMessage() }}</p>
             </div>
           </div>
         }
 
-        <form (ngSubmit)="onSubmit()" class="contact-form" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="contact-name" class="form-label">Name *</label>
+        <form (ngSubmit)="onSubmit()" class="studio-form" novalidate>
+          <div class="form-grid-two">
+            <div class="field-wrap">
+              <label for="contact-name" class="field-label">
+                <span class="step-num">01</span>
+                <span>Your Name</span>
+              </label>
               <input
                 id="contact-name"
                 name="name"
                 type="text"
-                class="form-input"
-                placeholder="Your Name"
+                class="studio-input"
+                placeholder="What's your name?"
                 [(ngModel)]="name"
                 required
               />
             </div>
 
-            <div class="form-group">
-              <label for="contact-email" class="form-label">Email *</label>
+            <div class="field-wrap">
+              <label for="contact-email" class="field-label">
+                <span class="step-num">02</span>
+                <span>Your Email</span>
+              </label>
               <input
                 id="contact-email"
                 name="email"
                 type="email"
-                class="form-input"
-                placeholder="your.email@example.com"
+                class="studio-input"
+                placeholder="name@company.com"
                 [(ngModel)]="email"
                 required
               />
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="contact-subject" class="form-label">Subject</label>
+          <div class="field-wrap">
+            <label for="contact-subject" class="field-label">
+              <span class="step-num">03</span>
+              <span>Subject</span>
+            </label>
             <input
               id="contact-subject"
               name="subject"
               type="text"
-              class="form-input"
-              placeholder="What is this regarding?"
+              class="studio-input"
+              placeholder="Topic or role"
               [(ngModel)]="subject"
             />
           </div>
 
-          <div class="form-group">
-            <label for="contact-message" class="form-label">Message *</label>
+          <div class="field-wrap">
+            <label for="contact-message" class="field-label">
+              <span class="step-num">04</span>
+              <span>Your Message</span>
+            </label>
             <textarea
               id="contact-message"
               name="message"
-              rows="5"
-              class="form-textarea"
-              placeholder="Your message..."
+              rows="4"
+              class="studio-textarea"
+              placeholder="Tell me about your project, team, or opportunity..."
               [(ngModel)]="message"
               required
             ></textarea>
           </div>
 
-          <button
-            type="submit"
-            class="btn-indigo submit-btn"
-            [disabled]="isSubmitting()"
-          >
-            @if (isSubmitting()) {
-              <span class="spinner" aria-hidden="true"></span>
-              <span>Sending...</span>
-            } @else {
-              <span>Send Message</span>
-              <span class="arrow-diagonal">↗</span>
-            }
-          </button>
+          <div class="form-bottom-actions">
+            <button
+              type="submit"
+              class="btn-indigo studio-submit-btn"
+              [disabled]="isSubmitting()"
+            >
+              @if (isSubmitting()) {
+                <span class="spinner" aria-hidden="true"></span>
+                <span>Transmitting...</span>
+              } @else {
+                <span>Send Message</span>
+                <span class="arrow-glyph">↗</span>
+              }
+            </button>
+
+            <a
+              [href]="profile.socialLinks.email"
+              class="direct-mail-hint"
+            >
+              <span>Or email directly via mailto</span>
+              <span class="arrow-glyph">↗</span>
+            </a>
+          </div>
         </form>
       </div>
     </div>

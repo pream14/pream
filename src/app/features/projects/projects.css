@@ -151,3 +151,30 @@
   border-color: transparent;
   transform: scale(1.06);
 }
+
+.repo-pill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.repo-pill-link:hover {
+  background: var(--btn-indigo);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+.arrow-tiny {
+  font-size: 0.78rem;
+}

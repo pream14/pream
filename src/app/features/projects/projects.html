@@ -46,7 +46,33 @@
             <span class="project-cat-pill">{{ project.category }}</span>
 
             <div class="project-actions">
-              @if (project.repoUrl) {
+              @if (project.frontendRepoUrl) {
+                <a
+                  [href]="project.frontendRepoUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="repo-pill-link"
+                  aria-label="View Frontend Repository"
+                  title="Frontend Repository"
+                >
+                  <span>Frontend</span>
+                  <span class="arrow-tiny">↗</span>
+                </a>
+              }
+              @if (project.backendRepoUrl) {
+                <a
+                  [href]="project.backendRepoUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="repo-pill-link"
+                  aria-label="View Backend Repository"
+                  title="Backend Repository"
+                >
+                  <span>Backend</span>
+                  <span class="arrow-tiny">↗</span>
+                </a>
+              }
+              @if (!project.frontendRepoUrl && !project.backendRepoUrl && project.repoUrl) {
                 <a
                   [href]="project.repoUrl"
                   target="_blank"
@@ -57,7 +83,8 @@
                 >
                   <span class="arrow-diagonal">↗</span>
                 </a>
-              } @else if (project.demoUrl) {
+              }
+              @if (project.demoUrl) {
                 <a
                   [href]="project.demoUrl"
                   target="_blank"
@@ -68,7 +95,8 @@
                 >
                   <span class="arrow-diagonal">↗</span>
                 </a>
-              } @else {
+              }
+              @if (!project.frontendRepoUrl && !project.backendRepoUrl && !project.repoUrl && !project.demoUrl) {
                 <span class="card-arrow-btn" title="Engineered Solution">
                   <span class="arrow-diagonal">↗</span>
                 </span>

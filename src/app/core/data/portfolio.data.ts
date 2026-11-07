@@ -86,7 +86,11 @@ export const PORTFOLIO_DATA: PortfolioData = {
       description: 'A React Native app with a Flask and MySQL backend to manage project-wise expenses and payments, plus a machine learning model that predicts future expenses from historical data. Published at IEEE ICNGCS 2025.',
       tags: ['React Native', 'Flask', 'MySQL', 'Machine Learning'],
       category: 'Mobile',
-      // repoUrl: 'https://github.com/YOUR_GITHUB_USERNAME/REPO', // TODO
+      // If you have separate repos, provide both:
+      // frontendRepoUrl: 'https://github.com/pream14/YOUR_FRONTEND_REPO',
+      // backendRepoUrl: 'https://github.com/pream14/YOUR_BACKEND_REPO',
+      // Or if you have a single combined repo:
+      // repoUrl: 'https://github.com/pream14/YOUR_REPO',
       featured: true
     },
     {

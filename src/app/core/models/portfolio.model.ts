@@ -32,6 +32,8 @@ export interface Project {
   tags: string[];
   category: ProjectCategory;
   repoUrl?: string;
+  frontendRepoUrl?: string;
+  backendRepoUrl?: string;
   demoUrl?: string;
   featured?: boolean;
 }

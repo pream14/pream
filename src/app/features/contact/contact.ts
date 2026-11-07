@@ -28,8 +28,7 @@ export class ContactComponent {
   // Topics for quick selection
   readonly topics: string[] = [
     'Job Opportunity',
-    'GenAI / LLM Project',
-    'Backend Architecture',
+    'Project Collaboration',
     'General Inquiry'
   ];
   selectedTopic = signal<string>('Job Opportunity');

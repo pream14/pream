@@ -87,8 +87,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
       tags: ['React Native', 'Flask', 'MySQL', 'Machine Learning'],
       category: 'Mobile',
       // If you have separate repos, provide both:
-      // frontendRepoUrl: 'https://github.com/pream14/YOUR_FRONTEND_REPO',
-      // backendRepoUrl: 'https://github.com/pream14/YOUR_BACKEND_REPO',
+      frontendRepoUrl: 'https://github.com/theetchanaa/civilfrontend.git',
+      backendRepoUrl: 'https://github.com/pream14/CivilBackend.git',
       // Or if you have a single combined repo:
       // repoUrl: 'https://github.com/pream14/YOUR_REPO',
       featured: true
